@@ -48,6 +48,11 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
         return $this->getParameter('access_token');
     }
 
+    public function setVariables($values)
+    {
+        $this->setParameter('variables', $values);
+    }
+
     /**
      * Get Customer Data
      *

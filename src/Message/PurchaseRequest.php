@@ -47,9 +47,6 @@ class PurchaseRequest extends AbstractRequest
             'items'              => $items,
             'external_reference' => $external_reference,
             'auto_return'        => 'approved',
-            'back_urls'          => [
-                'success' => $this->getReturnUrl()
-            ],
             //TODO add option for that
             'payment_methods'    => [
                 'excluded_payment_types' => [
@@ -58,7 +55,10 @@ class PurchaseRequest extends AbstractRequest
                 ]
             ]
         ];
-        return $purchaseObject;
+
+        $purchase = array_merge($purchaseObject, $this->getParameter('variables'));
+
+        return $purchase;
 
     }
 
